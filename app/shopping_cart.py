@@ -1,7 +1,6 @@
 import datetime
 import time
 
-
 products = [
     {"id":1, "name": "Chocolate Sandwich Cookies", "department": "snacks", "aisle": "cookies cakes", "price": 3.50},
     {"id":2, "name": "All-Seasons Salt", "department": "pantry", "aisle": "spices seasonings", "price": 4.99},
@@ -64,7 +63,7 @@ def selected_products():
     """
     for each_product in purchased_products:
         print("..." + str(each_product["name"]) + " " + to_usd(each_product["price"]))
-
+    
 def subtotal():
     """
         Used to calculate the subtotal of all of the products that are purchased
@@ -82,45 +81,44 @@ def total(cost):
     return total_cost
 
 
-## CASHIER INPUTS (collecting the products)
 
-product_all_id = []
+if __name__ == "__main__":
+    ## CASHIER INPUTS (collecting the products)
 
-x = 0
+    product_all_id = []
 
-while x < len(products):
-    dictionary = products[x]
-    product_all_id.append(dictionary["id"])
-    x = x+1
+    x = 0
 
-while True:
-    cashier_input = input("Please input a product identifier: ")
-    if cashier_input == "DONE":
-        break
-    elif int(cashier_input) in product_all_id:
-        matching_products = [item for item in products if item["id"] == int(cashier_input)]
-        purchased_products.append(matching_products[0])
-    else:
-        print("Product not found.")
+    while x < len(products):
+        dictionary = products[x]
+        product_all_id.append(dictionary["id"])
+        x = x+1
 
+    while True:
+        cashier_input = input("Please input a product identifier: ")
+        if cashier_input == "DONE":
+            break
+        elif int(cashier_input) in product_all_id:
+            matching_products = [item for item in products if item["id"] == int(cashier_input)]
+            purchased_products.append(matching_products[0])
+        else:
+            print("Product not found.")
 
-## RECEIPT OUTPUT
+    ## RECEIPT OUTPUT
 
-line()
-print("Basque Country Groceries")
-print("www.basque-country-groceries.com")
-line()
-print(f"CHECKOUT AT: {str(datetime.date.today())} {current_time()}")
-line()
-print("SELECTED PRODUCTS:")
-selected_products()
-line()
-print(f"SUBTOTAL: {to_usd(subtotal())}")
-print(f"TAX: {to_usd(sales_tax(subtotal()))}")
-print(f"TOTAL: {to_usd(total(subtotal()))}")
-line()
-print("ESKERRIK ASKO! (THANK YOU!) SEE YOU AGAIN SOON!")
-line()
-
-
+    line()
+    print("Basque Country Groceries")
+    print("www.basque-country-groceries.com")
+    line()
+    print(f"CHECKOUT AT: {str(datetime.date.today())} {current_time()}")
+    line()
+    print("SELECTED PRODUCTS:")
+    selected_products()
+    line()
+    print(f"SUBTOTAL: {to_usd(subtotal())}")
+    print(f"TAX: {to_usd(sales_tax(subtotal()))}")
+    print(f"TOTAL: {to_usd(total(subtotal()))}")
+    line()
+    print("ESKERRIK ASKO! (THANK YOU!) SEE YOU AGAIN SOON!")
+    line()
 
