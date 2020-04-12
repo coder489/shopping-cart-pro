@@ -35,13 +35,6 @@ def to_usd(my_price):
     """
     return f"${my_price:,.2f}" 
 
-def sales_tax(total):
-    """
-        Used to find the amount of tax on a given total.
-    """
-    taxes = total * tax_rate
-    return taxes
-
 def current_time():
     """
         Used to get the current time, format it, and then return it.
@@ -50,12 +43,6 @@ def current_time():
     t = time.localtime()                
     time_now = time.strftime("%I:%M %p", t) 
     return time_now
-
-def line():
-    """
-    Used to print the line for the receipt.
-    """
-    print("---------------------------------")
 
 def selected_products():
     """
@@ -73,6 +60,13 @@ def subtotal():
         subtotal = subtotal + float(each_product["price"])
     return subtotal
 
+def sales_tax(total):
+    """
+        Used to find the amount of tax on a given total.
+    """
+    taxes = total * tax_rate
+    return taxes
+
 def total(cost):
     """
         Used to calculate the total amount owed by adding the total and the tax on the total.
@@ -80,6 +74,11 @@ def total(cost):
     total_cost = cost + sales_tax(cost)
     return total_cost
 
+def line():
+    """
+    Used to print the line for the receipt.
+    """
+    print("---------------------------------")
 
 
 if __name__ == "__main__":
