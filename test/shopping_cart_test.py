@@ -7,6 +7,7 @@ def test_to_usd():
     result = to_usd(70.6)
     assert result == "$70.60"
 
+
 def test_sales_tax():
     result = sales_tax(10)
     assert result == 0.875
