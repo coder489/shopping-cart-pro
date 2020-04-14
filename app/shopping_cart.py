@@ -25,6 +25,7 @@ products = [
 ] # based on data from Instacart: https://www.instacart.com/datasets/grocery-shopping-2017
 
 purchased_products = []
+product_all_id = []
 tax_rate = 0.0875
 
 def to_usd(my_price):
@@ -35,29 +36,30 @@ def to_usd(my_price):
     """
     return f"${my_price:,.2f}" 
 
-def current_time():
+def request_time(t):
     """
-        Used to get the current time, format it, and then return it.
-        
-        Source: https://www.programiz.com/python-programming/datetime/current-datetime
-    """
-    t = time.localtime()                
-    time_now = time.strftime("%I:%M %p", t) 
-    return time_now
+        Used to get a time in a certain format.
 
-def selected_products():
+        Source: https://www.programiz.com/python-programming/datetime/current-datetime
+    """               
+    time_formatted = time.strftime("%I:%M %p", t) 
+    return time_formatted
+
+def selected_products(product_list):
     """
         Used to compile and print all of the selected products.
     """
-    for each_product in purchased_products:
-        print("..." + str(each_product["name"]) + " " + to_usd(each_product["price"]))
-    
-def subtotal():
+    result = ""
+    for each_product in product_list:
+        result = result + ("..." + str(each_product["name"]) + " " + str(to_usd(each_product["price"]) + "\n")) #found "\n" at https://stackoverflow.com/questions/13872049/print-empty-line/22534622
+    return result
+
+def subtotal(product_list):
     """
         Used to calculate the subtotal of all of the products that are purchased
     """
     subtotal = 0
-    for each_product in purchased_products:
+    for each_product in product_list:
         subtotal = subtotal + float(each_product["price"])
     return subtotal
 
@@ -75,17 +77,15 @@ def total(cost):
     total_cost = cost + sales_tax(cost)
     return total_cost
 
-def line():
+def line(symbol):
     """
-    Used to print the line for the receipt.
+        Used to print the line for the receipt.
     """
-    print("---------------------------------")
+    return symbol * 50
 
 
 if __name__ == "__main__":
     ## CASHIER INPUTS (collecting the products)
-
-    product_all_id = []
 
     x = 0
 
@@ -105,20 +105,22 @@ if __name__ == "__main__":
             print("Product not found.")
 
     ## RECEIPT OUTPUT
-
-    line()
+    
+    print("\n")
+    print(line("-"))
     print("Basque Country Groceries")
     print("www.basque-country-groceries.com")
-    line()
-    print(f"CHECKOUT AT: {str(datetime.date.today())} {current_time()}")
-    line()
-    print("SELECTED PRODUCTS:")
-    selected_products()
-    line()
-    print(f"SUBTOTAL: {to_usd(subtotal())}")
-    print(f"TAX: {to_usd(sales_tax(subtotal()))}")
-    print(f"TOTAL: {to_usd(total(subtotal()))}")
-    line()
+    print(line("-"))
+    print(f"CHECKOUT AT: {str(datetime.date.today())} {request_time(time.localtime())}")
+    print(line("-"))
+    print("\n" + "SELECTED PRODUCTS:")
+    print(selected_products(purchased_products))
+    print(line("-"))
+    print(f"SUBTOTAL: {to_usd(subtotal(purchased_products))}")
+    print(f"TAX: {to_usd(sales_tax(subtotal(purchased_products)))}")
+    print(f"TOTAL: {to_usd(total(subtotal(purchased_products)))}")
+    print(line("-"))
     print("ESKERRIK ASKO! (THANK YOU!) SEE YOU AGAIN SOON!")
-    line()
+    print(line("-"))
+    print("\n")
 
