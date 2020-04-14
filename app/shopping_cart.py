@@ -30,24 +30,33 @@ tax_rate = 0.0875
 
 def to_usd(my_price):
     """
-        Used to format the price in traditional US format. 
+    Converts a numeric value to usd-formatted string, for printing and display purposes.
+    
+    Parameters: 
+    
+        my_price (int or float): a price value that is not formatted like 4000.444444
         
-        Source: https://github.com/prof-rossetti/intro-to-python/blob/master/notes/python/datatypes/numbers.md#formatting-as-currency
+    Source: https://github.com/prof-rossetti/intro-to-python/blob/master/notes/python/datatypes/numbers.md#formatting-as-currency
     """
     return f"${my_price:,.2f}" 
 
-def request_time(t):
+def current_time():
     """
-        Used to get a time in a certain format.
-
-        Source: https://www.programiz.com/python-programming/datetime/current-datetime
-    """               
-    time_formatted = time.strftime("%I:%M %p", t) 
-    return time_formatted
+    Used to get the current time, format it, and then return it.
+        
+    Source: https://www.programiz.com/python-programming/datetime/current-datetime
+    """
+    t = time.localtime()                
+    time_now = time.strftime("%I:%M %p", t) 
+    return time_now
 
 def selected_products(product_list):
     """
-        Used to compile and print all of the selected products.
+    Loops through, compiles and prints a formatting element, the name of, and price of all of the items in a list of dictionaries.
+
+    Parameters:
+
+        product_list (list): a list of dictionaries of specified products
     """
     result = ""
     for each_product in product_list:
@@ -56,7 +65,11 @@ def selected_products(product_list):
 
 def subtotal(product_list):
     """
-        Used to calculate the subtotal of all of the products that are purchased
+    Calculates the subtotal of the prices associated with all of the dictionaries in a list of dictionaries.
+
+    Parameters:
+
+        product_list (list): a list of dictionaries of specified products
     """
     subtotal = 0
     for each_product in product_list:
@@ -65,21 +78,34 @@ def subtotal(product_list):
 
 def sales_tax(total):
     """
-        Used to find the amount of tax on a given total.
+    Calculates the tax owed on a given amount.
+
+    Parameters:
+
+    total (float or int): a price value, like 45.6868 or 45
     """
     taxes = total * tax_rate
     return taxes
 
 def total(cost):
     """
-        Used to calculate the total amount owed by adding the total and the tax on the total.
+    Calculates the total amount owed by adding the total and the tax on that total.
+
+    Parameters:
+
+    cost (float or int): a price value, like 45.6868 or 45
     """
     total_cost = cost + sales_tax(cost)
     return total_cost
 
 def line(symbol):
     """
-        Used to print the line for the receipt.
+    Creates a divider out of a specified symbol.
+    
+    Parameters: 
+    
+        symbol (str): any symbol that you wish to use repeatedly to form a divider, like "*" or "-"
+
     """
     return symbol * 50
 
@@ -111,7 +137,7 @@ if __name__ == "__main__":
     print("Basque Country Groceries")
     print("www.basque-country-groceries.com")
     print(line("-"))
-    print(f"CHECKOUT AT: {str(datetime.date.today())} {request_time(time.localtime())}")
+    print(f"CHECKOUT AT: {str(datetime.date.today())} {current_time()}")
     print(line("-"))
     print("\n" + "SELECTED PRODUCTS:")
     print(selected_products(purchased_products))
