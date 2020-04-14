@@ -31,6 +31,7 @@ tax_rate = 0.0875
 def to_usd(my_price):
     """
         Used to format the price in traditional US format. 
+
         Source: https://github.com/prof-rossetti/intro-to-python/blob/master/notes/python/datatypes/numbers.md#formatting-as-currency
     """
     return f"${my_price:,.2f}" 
@@ -44,12 +45,15 @@ def current_time():
     time_now = time.strftime("%I:%M %p", t) 
     return time_now
 
-def selected_products():
+def selected_products(proudct_list):
     """
         Used to compile and print all of the selected products.
     """
-    for each_product in purchased_products:
-        print("..." + str(each_product["name"]) + " " + to_usd(each_product["price"]))
+    for each_product in proudct_list:
+        all_products = [str(each_product["name"]) + to_usd(each_product["price"])]
+        #print("..." + str(each_product["name"]) + " " + to_usd(each_product["price"]))
+    return all_products
+
     
 def subtotal():
     """
@@ -112,7 +116,7 @@ if __name__ == "__main__":
     print(f"CHECKOUT AT: {str(datetime.date.today())} {current_time()}")
     line()
     print("SELECTED PRODUCTS:")
-    selected_products()
+    selected_products(purchased_products)
     line()
     print(f"SUBTOTAL: {to_usd(subtotal())}")
     print(f"TAX: {to_usd(sales_tax(subtotal()))}")
