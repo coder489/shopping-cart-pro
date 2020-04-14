@@ -1,7 +1,7 @@
 import datetime
 import time
 
-from app.shopping_cart import to_usd, sales_tax, total, selected_products, subtotal
+from app.shopping_cart import to_usd, sales_tax, total, selected_products, subtotal, line
 
 def test_to_usd():
     result = to_usd(70.6)
@@ -39,4 +39,6 @@ def test_total():
     result = total(10)
     assert result == 10.875
 
-
+def test_line():
+    result = line("-")
+    assert result == "--------------------------------------------------"
