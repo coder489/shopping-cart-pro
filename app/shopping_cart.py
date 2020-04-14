@@ -37,7 +37,7 @@ def to_usd(my_price):
     """
     return f"${my_price:,.2f}" 
 
-def current_time(t):
+def request_time(t):
     """
         Used to get a time in a certain format.
 
@@ -112,7 +112,7 @@ if __name__ == "__main__":
     print("Basque Country Groceries")
     print("www.basque-country-groceries.com")
     print(line("-"))
-    print(f"CHECKOUT AT: {str(datetime.date.today())} {current_time(time.localtime())}")
+    print(f"CHECKOUT AT: {str(datetime.date.today())} {request_time(time.localtime())}")
     print(line("-"))
     print("\n" + "SELECTED PRODUCTS:")
     print(selected_products(purchased_products))
