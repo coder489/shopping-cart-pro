@@ -24,12 +24,13 @@ def test_total():
 
 def test_selected_products():
     test_products = [
-    {"id":1, "name": "Chocolate Sandwich Cookies", "department": "snacks", "aisle": "cookies cakes", "price": 3.50},
-    {"id":2, "name": "All-Seasons Salt", "department": "pantry", "aisle": "spices seasonings", "price": 4.99},
-    {"id":3, "name": "Robust Golden Unsweetened Oolong Tea", "department": "beverages", "aisle": "tea", "price": 2.49}
-    ]
+        {"id":1, "name": "Chocolate Sandwich Cookies", "department": "snacks", "aisle": "cookies cakes", "price": 3.50},
+        {"id":2, "name": "All-Seasons Salt", "department": "pantry", "aisle": "spices seasonings", "price": 4.99},
+        {"id":3, "name": "Robust Golden Unsweetened Oolong Tea", "department": "beverages", "aisle": "tea", "price": 2.49}
+        ]
     result = selected_products(test_products)
-    assert result == "...Chocolate Sandwich Cookies $3.50""...All-Seasons Salt $4.99""...Robust Golden Unsweetened Oolong Tea $2.49"
+    assert result == "...Chocolate Sandwich Cookies $3.50\n""...All-Seasons Salt $4.99\n""...Robust Golden Unsweetened Oolong Tea $2.49\n"
+    
 
 
 

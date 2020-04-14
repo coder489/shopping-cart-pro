@@ -55,12 +55,12 @@ def selected_products(product_list):
     return result
 
 
-def subtotal():
+def subtotal(product_list):
     """
         Used to calculate the subtotal of all of the products that are purchased
     """
     subtotal = 0
-    for each_product in purchased_products:
+    for each_product in product_list:
         subtotal = subtotal + float(each_product["price"])
     return subtotal
 
@@ -118,9 +118,9 @@ if __name__ == "__main__":
     print("\n" + "SELECTED PRODUCTS:")
     print(selected_products(purchased_products))
     line()
-    print(f"SUBTOTAL: {to_usd(subtotal())}")
-    print(f"TAX: {to_usd(sales_tax(subtotal()))}")
-    print(f"TOTAL: {to_usd(total(subtotal()))}")
+    print(f"SUBTOTAL: {to_usd(subtotal(purchased_products))}")
+    print(f"TAX: {to_usd(sales_tax(subtotal(purchased_products)))}")
+    print(f"TOTAL: {to_usd(total(subtotal(purchased_products)))}")
     line()
     print("ESKERRIK ASKO! (THANK YOU!) SEE YOU AGAIN SOON!")
     line()
