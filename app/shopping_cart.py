@@ -28,11 +28,10 @@ purchased_products = []
 product_all_id = []
 tax_rate = 0.0875
 
-
 def to_usd(my_price):
     """
         Used to format the price in traditional US format. 
-
+        
         Source: https://github.com/prof-rossetti/intro-to-python/blob/master/notes/python/datatypes/numbers.md#formatting-as-currency
     """
     return f"${my_price:,.2f}" 
