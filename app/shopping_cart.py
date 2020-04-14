@@ -45,16 +45,16 @@ def current_time():
     time_now = time.strftime("%I:%M %p", t) 
     return time_now
 
-def selected_products(proudct_list):
+def selected_products(product_list):
     """
         Used to compile and print all of the selected products.
     """
-    for each_product in proudct_list:
-        all_products = [str(each_product["name"]) + to_usd(each_product["price"])]
-        #print("..." + str(each_product["name"]) + " " + to_usd(each_product["price"]))
-    return all_products
+    result = ""
+    for each_product in product_list:
+        result = result + ("..." + str(each_product["name"]) + " " + str(to_usd(each_product["price"]) + "\n")) #found "\n" at https://stackoverflow.com/questions/13872049/print-empty-line/22534622
+    return result
 
-    
+
 def subtotal():
     """
         Used to calculate the subtotal of all of the products that are purchased
@@ -115,8 +115,8 @@ if __name__ == "__main__":
     line()
     print(f"CHECKOUT AT: {str(datetime.date.today())} {current_time()}")
     line()
-    print("SELECTED PRODUCTS:")
-    selected_products(purchased_products)
+    print("\n" + "SELECTED PRODUCTS:")
+    print(selected_products(purchased_products))
     line()
     print(f"SUBTOTAL: {to_usd(subtotal())}")
     print(f"TAX: {to_usd(sales_tax(subtotal()))}")

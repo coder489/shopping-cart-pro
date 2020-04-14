@@ -29,9 +29,7 @@ def test_selected_products():
     {"id":3, "name": "Robust Golden Unsweetened Oolong Tea", "department": "beverages", "aisle": "tea", "price": 2.49}
     ]
     result = selected_products(test_products)
-    assert result == {"...Chocolate Sandwich Cookies $3.50"
-                        "...All-Seasons Salt $4.99"
-                    "...Robust Golden Unsweetened Oolong Tea $2.49"}
+    assert result == "...Chocolate Sandwich Cookies $3.50""...All-Seasons Salt $4.99""...Robust Golden Unsweetened Oolong Tea $2.49"
 
 
 
