@@ -53,8 +53,7 @@ def selected_products(product_list):
     for each_product in product_list:
         result = result + ("..." + str(each_product["name"]) + " " + str(to_usd(each_product["price"]) + "\n")) #found "\n" at https://stackoverflow.com/questions/13872049/print-empty-line/22534622
     return result
-
-
+    
 def subtotal(product_list):
     """
         Used to calculate the subtotal of all of the products that are purchased
